@@ -1,0 +1,28 @@
+{
+  "name": "disc-bag",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "run-s clean create-dist copy-assets && run-p dev:*",
+    "dev:wrangler": "wrangler pages dev dist --live-reload --compatibility-date=2023-05-18",
+    "dev:esbuild": "esbuild --bundle src/server.ts --format=esm --watch --outfile=dist/_worker.js",
+    "build": "esbuild --bundle src/server.ts --format=esm --outfile=dist/_worker.js && npm run copy-assets",
+    "deploy": "wrangler pages publish dist",
+    "create-dist": "mkdir dist",
+    "copy-assets": "cp -rl ./public/* ./dist && cp -rl ./public/.well-known ./dist",
+    "clean-build-deploy": "run-s clean build deploy",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "hono": "2.2.5"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20230518.0",
+    "npm-run-all": "^4.1.5",
+    "wrangler": "^2.1.10"
+  }
+}
