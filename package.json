@@ -10,7 +10,7 @@
     "build": "esbuild --bundle src/server.ts --format=esm --outfile=dist/_worker.js && npm run copy-assets",
     "deploy": "wrangler pages publish dist",
     "create-dist": "mkdir dist",
-    "copy-assets": "cp -rl ./public/* ./dist && cp -rl ./public/.well-known ./dist",
+    "copy-assets": "cp -rl ./public/* ./dist",
     "clean-build-deploy": "run-s clean build deploy",
     "clean": "rm -rf dist"
   },
