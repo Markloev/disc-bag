@@ -12,7 +12,8 @@ async function main() {
     }
     let token = localStorage.getItem("rmx-session");
     if (!token) {
-        window.open("http://localhost/a/x/auth/google?redirect=http://localhost:8788");
+        //dev http://localhost/a/x/auth/google?redirect=http://localhost:8788
+        window.open(`https://prod.remixlabs.com/a/x/auth/google?redirect=https://${url.host}`);
     }
 
     // url to remix file -- /<filename>.remix points to a remix file in the web directory
